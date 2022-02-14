@@ -25,4 +25,4 @@ def solution():
     print(sum_of_factors)
 
 # first attempt = 33165 (WRONG)
-# second attempt = 233168 (CORRECT)
+# second attempt = 233168 (CORRECT) in 0.0350167 seconds
