@@ -1,3 +1,6 @@
+import math
+
+
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
     return True if x % y == 0 else False
@@ -21,3 +24,24 @@ def find_n_fibonacci_terms(n):
         for term in range(3, n + 1):
             terms.append(terms[-1] + terms[-2])
         return terms
+
+
+def is_prime(n, already_checked=None):  # todo this needs major work, should do prime factorial method
+    """ return True if number n is prime """
+    if already_checked is None:
+        already_checked = []
+    max_n = int(math.sqrt(n))
+    if n <= 1:
+        return False
+    else:
+        checked = already_checked
+        for i in range(2, max_n):
+            if i in already_checked:
+                pass
+            elif n % i == 0:
+                return False
+            else:
+                for x in range(i, max_n):
+                    if is_x_a_multiple_of_y(x, i):
+                        checked.append(x)
+        return True, checked
