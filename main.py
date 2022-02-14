@@ -1,6 +1,6 @@
-import Problem_2
+import Problem_3
 
-problem = Problem_2
+problem = Problem_3
 
 if __name__ == '__main__':
     problem.solution()

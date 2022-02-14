@@ -1,9 +1,11 @@
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
-    if x % y == 0:
-        return True
-    else:
-        return False
+    return True if x % y == 0 else False
+
+
+def next_fibonacci_term(n1, n2):
+    """ returns the next fibonacci term given n1 and n2"""
+    return n1 + n2
 
 
 def find_n_fibonacci_terms(n):
