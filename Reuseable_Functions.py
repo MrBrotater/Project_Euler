@@ -1,20 +1,18 @@
-
 import json
+
 
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
     return True if x % y == 0 else False
 
 
-def next_fibonacci_term(n1, n2):
+def next_fibonacci_term(n1: int, n2: int) -> int:
     """ returns the next fibonacci term given n1 and n2"""
     return n1 + n2
 
 
-def find_n_fibonacci_terms(n):
-    """
-    returns the first n fibonacci terms in a list
-    """
+def find_n_fibonacci_terms(n: int) -> list:
+    """ returns the first n fibonacci terms in a list """
     if n == 1:
         return [1]
     elif n == 2:
@@ -26,10 +24,13 @@ def find_n_fibonacci_terms(n):
         return terms
 
 
-def primes_up_to_n(n):
-    """ returns all primes up to number n using sieve of eratosthenes method"""
+def primes_up_to_n(n: int) -> list:
+    """
+    First checks the cached_primes.json file to see if all requested primes are available.
+    Additional primes are calculated as needed up to number n using th esieve of eratosthenes
+    method.
+    """
     primes = get_cached_primes()
-    print(f'primes = {primes}')
     not_primes = get_not_primes(primes, n)
 
     if len(primes) > 0 and n < primes[-1]:
@@ -54,7 +55,9 @@ def primes_up_to_n(n):
     return primes
 
 
-def get_not_primes(primes: list, n: int):
+def get_not_primes(primes: list, n: int) -> list:
+    """ given a list of primes, calculates numbers that can be confirmed as not primes
+    up to number n """
     not_primes = []
     for prime in primes:
         new_not_prime = prime * prime
@@ -63,20 +66,23 @@ def get_not_primes(primes: list, n: int):
             new_not_prime += prime
     return not_primes
 
-def save_primes_to_cache(primes: list):
+
+def save_primes_to_cache(primes: list) -> None:
+    """
+    given a list of primes, checks if any are not already cached, then saves them
+    to the cached_primes.json file
+    """
     cached_primes = get_cached_primes()
-    # print(f'cached primes = {cached_primes}\nlen = {len(cached_primes)}')
     new_primes = [prime for prime in primes if prime not in cached_primes]
-    # print(f' new primes = {new_primes}\nlen = {len(new_primes)}')
     if len(new_primes) > 0:
         cached_primes = cached_primes + new_primes
-        # print(f'cached primes = {cached_primes}\nlen = {len(cached_primes)}')
         with open('cached_primes.json', 'w') as cache_file:
             json.dump(cached_primes, cache_file)
     return
 
 
-def get_cached_primes():
+def get_cached_primes() -> list:
+    """ retrieves any primes cached in the cached_primes.json file """
     try:
         with open('cached_primes.json', 'r') as cache_file:
             primes = json.load(cache_file)
@@ -84,3 +90,7 @@ def get_cached_primes():
     except FileNotFoundError:
         return []
 
+
+def is_palindrome(n: int) -> bool:
+    """ returns true if n is a palindrome (same value reversed as forwards) """
+    return True if str(n) == str(n)[::-1] else False
