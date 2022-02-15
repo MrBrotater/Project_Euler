@@ -1,5 +1,5 @@
 import math
-
+import numpy
 
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
@@ -26,22 +26,20 @@ def find_n_fibonacci_terms(n):
         return terms
 
 
-def is_prime(n, already_checked=None):  # todo this needs major work, should do prime factorial method
-    """ return True if number n is prime """
-    if already_checked is None:
-        already_checked = []
-    max_n = int(math.sqrt(n))
-    if n <= 1:
-        return False
-    else:
-        checked = already_checked
-        for i in range(2, max_n):
-            if i in already_checked:
-                pass
-            elif n % i == 0:
-                return False
-            else:
-                for x in range(i, max_n):
-                    if is_x_a_multiple_of_y(x, i):
-                        checked.append(x)
-        return True, checked
+def primes_up_to_n(n):
+    """ returns all primes up to number n using sieve of eratosthenes method"""
+    primes = []
+    not_primes = []
+    for num in range(2, n + 1):
+        if num % 1000 == 0:
+            print(f'{num} of {n} complete')
+        if num in not_primes:
+            pass
+        else:
+            primes.append(num)
+            new_not_prime = num * num
+            while new_not_prime <= n:
+                not_primes.append(new_not_prime)
+                new_not_prime += num
+    print(primes)
+    return primes
