@@ -8,18 +8,23 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 
 def solution():
-    solution_found = False
     n = 20
-    factors = range(1, 10)
-    print(factors)
-    while not solution_found:
-        switch = 1
+    factors = range(1, 20)
+    while True:
+        remainder = 0
+
+        if n % 1000000 == 0:
+            print(f'checking {n}')
 
         for factor in factors:
-            print(n % factor)
-            if n % factor != 0:
-                break
+            remainder += n % factor
+
+        if remainder == 0:
+            return print(f'the solution is {n}')
 
         n += 1
 
-    return None
+    return
+
+
+# First solution = 232792560 (CORRECT) solved in 237.19471109999998 seconds
