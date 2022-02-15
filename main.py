@@ -1,8 +1,8 @@
-import Problem_5
+import Problem_6
 import compute_primes
 import timeit
 
-problem = Problem_5
+problem = Problem_6
 
 start_time = timeit.default_timer()
 
