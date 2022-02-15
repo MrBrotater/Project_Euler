@@ -28,7 +28,10 @@ def find_n_fibonacci_terms(n):
 
 def primes_up_to_n(n):
     """ returns all primes up to number n using sieve of eratosthenes method"""
-    primes = []
+    with open('cached_primes.txt', 'r') as openfile:
+        primes = openfile.read().strip().split(' ')
+    # primes = []
+    print(f'primes from file = {primes}')
     not_primes = []
     for num in range(2, n + 1):
         if num % 1000 == 0:

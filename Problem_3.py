@@ -11,9 +11,13 @@ import math
 
 
 def solution():
-    x = 600851475143
+    # x = 600851475143
+    x = 10000
     n = int(math.sqrt(x))
     primes = primes_up_to_n(n)
+    with open('cached_primes.txt', 'w+') as openfile:
+        for prime in primes:
+            openfile.write(f'{prime} ')
     prime_factors = []
     for prime in primes:
         if x % prime == 0:
