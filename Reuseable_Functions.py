@@ -1,5 +1,5 @@
-import math
-import numpy
+
+import json
 
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
@@ -28,21 +28,59 @@ def find_n_fibonacci_terms(n):
 
 def primes_up_to_n(n):
     """ returns all primes up to number n using sieve of eratosthenes method"""
-    with open('cached_primes.txt', 'r') as openfile:
-        primes = openfile.read().strip().split(' ')
-    # primes = []
-    print(f'primes from file = {primes}')
-    not_primes = []
-    for num in range(2, n + 1):
+    primes = get_cached_primes()
+    print(f'primes = {primes}')
+    not_primes = get_not_primes(primes, n)
+
+    if len(primes) > 0 and n < primes[-1]:
+        return [prime for prime in primes if prime <= n]
+
+    if len(primes) == 0:
+        start_n = 2
+    else:
+        start_n = primes[-1] + 1
+
+    for num in range(start_n, n + 1):
         if num % 1000 == 0:
             print(f'{num} of {n} complete')
-        if num in not_primes:
-            pass
-        else:
+            save_primes_to_cache(primes)
+        if num not in not_primes:
             primes.append(num)
             new_not_prime = num * num
             while new_not_prime <= n:
                 not_primes.append(new_not_prime)
                 new_not_prime += num
-    print(primes)
+    save_primes_to_cache(primes)
     return primes
+
+
+def get_not_primes(primes: list, n: int):
+    not_primes = []
+    for prime in primes:
+        new_not_prime = prime * prime
+        while new_not_prime <= n:
+            not_primes.append(new_not_prime)
+            new_not_prime += prime
+    return not_primes
+
+def save_primes_to_cache(primes: list):
+    cached_primes = get_cached_primes()
+    # print(f'cached primes = {cached_primes}\nlen = {len(cached_primes)}')
+    new_primes = [prime for prime in primes if prime not in cached_primes]
+    # print(f' new primes = {new_primes}\nlen = {len(new_primes)}')
+    if len(new_primes) > 0:
+        cached_primes = cached_primes + new_primes
+        # print(f'cached primes = {cached_primes}\nlen = {len(cached_primes)}')
+        with open('cached_primes.json', 'w') as cache_file:
+            json.dump(cached_primes, cache_file)
+    return
+
+
+def get_cached_primes():
+    try:
+        with open('cached_primes.json', 'r') as cache_file:
+            primes = json.load(cache_file)
+        return primes
+    except FileNotFoundError:
+        return []
+
