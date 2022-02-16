@@ -21,17 +21,27 @@ def number_to_word(n):
     hundreds = [x + 'hundred' for x in one_to_nine]
 
     if n < 10:
-        return one_to_nine[n - 1]
+        num_word = one_to_nine[n - 1]
     elif 10 <= n <= 19:
-        return ten_to_nineteen[n - 10]
+        num_word = ten_to_nineteen[n - 10]
+    elif n % 10 == 0:
+        if n % 100 == 0:
+            num_word = hundreds[n // 100 - 1]
+        else:
+            num_word = tens[n // 10 - 2]
     elif 20 <= n <= 99:
-        return tens[n // 10 - 2] + one_to_nine[n % 10 - 1]
-    elif n % 100 == 0:
-        return hundreds[n / 100 - 1]
+        num_word = tens[n // 10 - 2] + one_to_nine[n % 10 - 1]
     else:
-        return hundreds[n // 100 - 1] + 'and' + tens[n // 10 % 10 - 1] + one_to_nine[n // 10 % 10 *10 - 1]
+        num_word = hundreds[n // 100 - 1] + 'and' + tens[n % 100 // 10 - 1] + one_to_nine[(n % 100) % 10 - 1]
+
+    return num_word
 
 
 def solution():
-    number_to_word(156)
+    count = 0
+    for n in range(1, 200):
+        word = number_to_word(n)
+        count += len(word)
+        print(word, count)
+    print('100', number_to_word(100))
     return
