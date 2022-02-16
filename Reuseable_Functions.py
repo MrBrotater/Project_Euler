@@ -60,13 +60,37 @@ def primes_up_to_n(n: int) -> list:
 
 
 def numpy_primes_up_to_n(n: int) -> list:
-
     a = np.array(range(3, n, 2))
     for j in range(0, int(round(np.sqrt(n), 0))):  # checks values from 0 to sqrt(n)
         a[(a != a[j]) & (a % a[j] == 0)] = 0  # assigns all multiples of j to 0
         a = a[a != 0]  # removes all the 0 values from the array
     a = [2] + list(a)  # turns everything back into a list, and adds 2 to beginning
     return a
+
+
+def number_of_factors(n: int) -> int:
+    primes = numpy_primes_up_to_n(n)
+    prime_factors = [p for p in primes if n % p == 0]
+    no_factors = 1
+    for p in prime_factors:
+        count = 0
+        while n % p == 0:
+            count += 1
+            n /= p
+        no_factors *= (count + 1)
+    return no_factors
+
+
+def factors_of_n(n: int) -> list:
+    primes = numpy_primes_up_to_n(n)
+    prime_factors = [p for p in primes if n % p == 0]
+    factors = prime_factors + [int(n / p) for p in prime_factors] + [1, n]
+    for p in prime_factors:
+        while p <= n:
+            p += p
+            if p not in factors and n % p == 0:
+                factors += [p, int(n / p)]
+    return factors
 
 
 def get_not_primes(primes: list, n: int) -> list:
