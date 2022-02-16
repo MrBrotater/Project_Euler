@@ -28,8 +28,8 @@ from Reuseable_Functions import save_primes_to_cache, get_cached_primes
 
 
 def solution():
-    tri_num = 54074800
-    n = 10400
+    tri_num = 63839350
+    n = 11300
     max_factors = 0
 
     primes = get_cached_primes()
@@ -50,4 +50,4 @@ def solution():
 
 # solution = 76576500, need to find a way to get there in a reasonable time
 
-# stopped with progress: n = 2200, tri_num = 2418900
+# stopped with progress: n = 11300, tri_num = 63839350
