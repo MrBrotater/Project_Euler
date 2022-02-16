@@ -1,5 +1,6 @@
 import json
-
+import timeit
+import numpy as np
 
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
@@ -32,6 +33,7 @@ def primes_up_to_n(n: int) -> list:
     """
     primes = get_cached_primes()
     not_primes = get_not_primes(primes, n)
+    start_time = timeit.default_timer()
 
     if len(primes) > 0 and n < primes[-1]:
         return [prime for prime in primes if prime <= n]
@@ -44,6 +46,8 @@ def primes_up_to_n(n: int) -> list:
     for num in range(start_n, n + 1):
         if num % 1000 == 0:
             print(f'{num} of {n} complete')
+            print(f'execution time = {timeit.default_timer() - start_time} seconds')
+            start_time = timeit.default_timer()
             save_primes_to_cache(primes)
         if num not in not_primes:
             primes.append(num)
@@ -53,6 +57,16 @@ def primes_up_to_n(n: int) -> list:
                 new_not_prime += num
     save_primes_to_cache(primes)
     return primes
+
+
+def numpy_primes_up_to_n(n: int) -> list:
+
+    a = np.array(range(3, n, 2))
+    for j in range(0, int(round(np.sqrt(n), 0))):  # checks values from 0 to sqrt(n)
+        a[(a != a[j]) & (a % a[j] == 0)] = 0  # assigns all multiples of j to 0
+        a = a[a != 0]  # removes all the 0 values from the array
+    a = [2] + list(a)  # turns everything back into a list, and adds 2 to beginning
+    return a
 
 
 def get_not_primes(primes: list, n: int) -> list:
