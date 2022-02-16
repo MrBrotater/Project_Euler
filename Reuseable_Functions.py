@@ -68,8 +68,8 @@ def numpy_primes_up_to_n(n: int) -> list:
     return a
 
 
-def number_of_factors(n: int) -> int:
-    primes = numpy_primes_up_to_n(n)
+def number_of_factors(n: int, primes: list) -> int:
+    # primes = numpy_primes_up_to_n(n)
     prime_factors = [p for p in primes if n % p == 0]
     no_factors = 1
     for p in prime_factors:
@@ -110,21 +110,23 @@ def save_primes_to_cache(primes: list) -> None:
     given a list of primes, checks if any are not already cached, then saves them
     to the cached_primes.json file
     """
-    cached_primes = get_cached_primes()
-    new_primes = [prime for prime in primes if prime not in cached_primes]
-    if len(new_primes) > 0:
-        cached_primes = cached_primes + new_primes
-        with open('cached_primes.json', 'w') as cache_file:
-            json.dump(cached_primes, cache_file)
+    primes = np.array(primes, dtype='int64')
+    np.save('cached_primes.npy', primes)
+    # if len(new_primes) > 0:
+    #     cached_primes = cached_primes + new_primes
+    #     with open('cached_primes.json', 'w') as cache_file:
+    #         json.dump(cached_primes, cache_file)
     return
 
 
 def get_cached_primes() -> list:
     """ retrieves any primes cached in the cached_primes.json file """
     try:
-        with open('cached_primes.json', 'r') as cache_file:
-            primes = json.load(cache_file)
-        return primes
+        # with open('cached_primes.json', 'r') as cache_file:
+        #     primes = json.load(cache_file)
+        # return primes
+        primes = np.load('cached_primes.npy')
+        return list(primes)
     except FileNotFoundError:
         return []
 

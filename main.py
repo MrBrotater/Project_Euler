@@ -1,7 +1,7 @@
-import Problem_10
+import Problem_12
 import timeit
 
-problem = Problem_10
+problem = Problem_12
 
 start_time = timeit.default_timer()
 

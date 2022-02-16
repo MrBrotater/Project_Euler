@@ -23,16 +23,22 @@ What is the value of the first triangle number to have over five hundred divisor
 """
 
 import numpy as np
-from Reuseable_Functions import factors_of_n, number_of_factors
+from Reuseable_Functions import numpy_primes_up_to_n, number_of_factors
+from Reuseable_Functions import save_primes_to_cache, get_cached_primes
 
 
 def solution():
-    tri_num = 55
-    n = 11
+    tri_num = 54074800
+    n = 10400
     max_factors = 0
 
+    primes = get_cached_primes()
+    if len(primes) == 0:
+        primes = numpy_primes_up_to_n(80000000)
+        save_primes_to_cache(primes)
+    print(primes)
     while max_factors <= 500:
-        num_factors = number_of_factors(tri_num)
+        num_factors = number_of_factors(tri_num, [p for p in primes if p < tri_num])
         if num_factors > max_factors:
             max_factors = num_factors
             print(f'triangular number {tri_num} has the new max factors of {max_factors}')
