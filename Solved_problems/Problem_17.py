@@ -15,33 +15,35 @@ contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The u
 
 def number_to_word(n):
     one_to_nine = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-    ten_to_nineteen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen',
-                       'eighteen', 'nineteen']
-    tens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    one_to_nineteen = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+                       'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
+                       'seventeen', 'eighteen', 'nineteen']
+    tens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
     hundreds = [x + 'hundred' for x in one_to_nine]
 
-    if n < 10:
-        num_word = one_to_nine[n - 1]
-    elif 10 <= n <= 19:
-        num_word = ten_to_nineteen[n - 10]
+    if n <= 19:
+        num_word = one_to_nineteen[n - 1]
     elif n % 10 == 0:
-        if n % 100 == 0:
+        if n % 1000 == 0:
+            num_word = number_to_word(n // 1000) + 'thousand'
+        elif n % 100 == 0:
             num_word = hundreds[n // 100 - 1]
+        elif n > 100:
+            num_word = hundreds[n // 100 - 1] + 'and' + number_to_word(n % 100)
         else:
-            num_word = tens[n // 10 - 2]
+            num_word = tens[n // 10 - 1]
     elif 20 <= n <= 99:
-        num_word = tens[n // 10 - 2] + one_to_nine[n % 10 - 1]
+        num_word = tens[n // 10 - 1] + one_to_nine[n % 10 - 1]
     else:
-        num_word = hundreds[n // 100 - 1] + 'and' + tens[n % 100 // 10 - 1] + one_to_nine[(n % 100) % 10 - 1]
+        num_word = hundreds[n // 100 - 1] + 'and' + number_to_word(n % 100)
 
     return num_word
 
 
 def solution():
     count = 0
-    for n in range(1, 200):
+    for n in range(1, 1001):
         word = number_to_word(n)
         count += len(word)
-        print(word, count)
-    print('100', number_to_word(100))
+    print(f'solution = {count}')
     return
