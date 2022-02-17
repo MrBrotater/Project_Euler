@@ -15,5 +15,10 @@ What is the total of all the name scores in the file?
 
 
 def solution():
-
+    with open('Working_on/Problem_22_names.txt', 'r') as f:
+        names = f.read()
+    names = names.replace('"', '')
+    names = names.split(',')
+    for name in names:
+        print(name)
     return
