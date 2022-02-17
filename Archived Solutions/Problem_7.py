@@ -7,13 +7,12 @@ What is the 10 001st prime number?
 """
 
 
-from Reuseable_Functions import get_cached_primes
+from Reuseable_Functions import numpy_primes_up_to_n
 
 
 def solution():
-    primes = get_cached_primes()
+    primes = numpy_primes_up_to_n(105000)
     print(primes[10001 - 1])
     return
 
-# First attempt = 104743 (CORRECT) solved in 0.008070399999999991 seconds
-# note: I cheated by using over 70000 primes calculated and cached during Problem 3 :)
+# First attempt = 104743 (CORRECT) solved in 0.02725340000000001 seconds
