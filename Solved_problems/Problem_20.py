@@ -9,10 +9,11 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 Find the sum of the digits in the number 100!
 """
 
-from Reuseable_Functions import sum_digits
+from Working_on.Reuseable_Functions import sum_digits
+import math
 
 
 def solution():
-    #prob 16
-    print(sum_digits(2**1000))
+    factorial = math.factorial(100)
+    print(sum_digits(factorial))
     return
