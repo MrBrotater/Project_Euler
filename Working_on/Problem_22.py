@@ -13,12 +13,27 @@ is the 938th name in the list. So, COLIN would obtain a score of 938 × 53 = 497
 What is the total of all the name scores in the file?
 """
 
+def alphab_value(n: str) -> int:
+    return ord(n) - 64
+
 
 def solution():
     with open('Working_on/Problem_22_names.txt', 'r') as f:
         names = f.read()
     names = names.replace('"', '')
     names = names.split(',')
+    names.sort()
+
+    i = 1
+    total_score = 0
+
     for name in names:
-        print(name)
+        name_sum = 0
+        for ltr in name:
+            name_sum += alphab_value(ltr)
+        total_score += i * name_sum
+        i += 1
+    print(total_score)
     return
+
+# first attempt = 850081394 (INCORRECT)
