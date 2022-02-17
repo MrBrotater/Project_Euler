@@ -1,4 +1,3 @@
-import json
 import timeit
 import numpy as np
 
@@ -27,9 +26,8 @@ def find_n_fibonacci_terms(n: int) -> list:
 
 def primes_up_to_n(n: int) -> list:
     """
-    First checks the cached_primes.json file to see if all requested primes are available.
-    Additional primes are calculated as needed up to number n using th esieve of eratosthenes
-    method.
+    My first attempt at sieve of eratosthenes, which was quite slow.
+    deprecated, now using numpy_primes_up_to_n
     """
     primes = get_cached_primes()
     not_primes = get_not_primes(primes, n)
@@ -60,6 +58,7 @@ def primes_up_to_n(n: int) -> list:
 
 
 def numpy_primes_up_to_n(n: int) -> list:
+    """ very efficient sieve of eratosthenes implementation to find primes up to number n """
     a = np.array(range(3, n, 2))
     for j in range(0, int(round(np.sqrt(n), 0))):  # checks values from 0 to sqrt(n)
         a[(a != a[j]) & (a % a[j] == 0)] = 0  # assigns all multiples of j to 0
@@ -68,7 +67,13 @@ def numpy_primes_up_to_n(n: int) -> list:
     return a
 
 
-def number_of_factors(n: int, primes: list) -> int:
+def no_of_proper_divisors(n: int, primes: list) -> int:
+    """
+    calculates the expected number of proper divisors of number n using prime factorization.
+    primes are taken as an input because this was used iteratively for one problem and
+    calculating inside the function was extremely slow.  not sure how to make this
+    an optional argument yet.
+    """
     # primes = numpy_primes_up_to_n(n)
     prime_factors = [p for p in primes if n % p == 0]
     no_factors = 1
@@ -81,7 +86,8 @@ def number_of_factors(n: int, primes: list) -> int:
     return no_factors
 
 
-def factors_of_n(n: int) -> list:
+def proper_divisors_of_n(n: int) -> list:
+    """ returns a list of the proper divisors (factors) of the number n """
     primes = numpy_primes_up_to_n(n)
     prime_factors = [p for p in primes if n % p == 0]
     factors = prime_factors + [int(n / p) for p in prime_factors] + [1, n]
@@ -112,19 +118,12 @@ def save_primes_to_cache(primes: list) -> None:
     """
     primes = np.array(primes, dtype='int64')
     np.save('../Cache_files/cached_primes.npy', primes)
-    # if len(new_primes) > 0:
-    #     cached_primes = cached_primes + new_primes
-    #     with open('cached_primes.json', 'w') as cache_file:
-    #         json.dump(cached_primes, cache_file)
     return
 
 
 def get_cached_primes() -> list:
     """ retrieves any primes cached in the cached_primes.json file """
     try:
-        # with open('cached_primes.json', 'r') as cache_file:
-        #     primes = json.load(cache_file)
-        # return primes
         primes = np.load('../Cache_files/cached_primes.npy')
         return list(primes)
     except FileNotFoundError:

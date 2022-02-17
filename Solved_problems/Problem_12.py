@@ -22,7 +22,7 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?
 """
 
-from Working_on.Reuseable_Functions import numpy_primes_up_to_n, number_of_factors
+from Working_on.Reuseable_Functions import numpy_primes_up_to_n, no_of_proper_divisors
 from Working_on.Reuseable_Functions import save_primes_to_cache, get_cached_primes
 
 
@@ -37,7 +37,7 @@ def solution():
         save_primes_to_cache(primes)
     print(primes)
     while max_factors <= 500:
-        num_factors = number_of_factors(tri_num, [p for p in primes if p < tri_num])
+        num_factors = no_of_proper_divisors(tri_num, [p for p in primes if p < tri_num])
         if num_factors > max_factors:
             max_factors = num_factors
             print(f'triangular number {tri_num} has the new max factors of {max_factors}')
