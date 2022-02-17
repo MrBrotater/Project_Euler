@@ -14,13 +14,7 @@ def solution():
     n = 1000
     sum_of_factors = 0
     for i in range(1, n):
-        if is_x_a_multiple_of_y(i, 3):
+        if is_x_a_multiple_of_y(i, 3) or is_x_a_multiple_of_y(i, 5):
             sum_of_factors += i
-            print(f'{i} is a multiple of 3')
-        elif is_x_a_multiple_of_y(i, 5):
-            sum_of_factors += i
-            print(f'{i} is a multiple of 5')
-        else:
-            print(f'{i} is a NOT multiple of 3 or 5')
     print(sum_of_factors)
     return
