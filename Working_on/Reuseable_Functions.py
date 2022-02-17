@@ -111,7 +111,7 @@ def save_primes_to_cache(primes: list) -> None:
     to the cached_primes.json file
     """
     primes = np.array(primes, dtype='int64')
-    np.save('cached_primes.npy', primes)
+    np.save('../Cache_files/cached_primes.npy', primes)
     # if len(new_primes) > 0:
     #     cached_primes = cached_primes + new_primes
     #     with open('cached_primes.json', 'w') as cache_file:
@@ -125,7 +125,7 @@ def get_cached_primes() -> list:
         # with open('cached_primes.json', 'r') as cache_file:
         #     primes = json.load(cache_file)
         # return primes
-        primes = np.load('cached_primes.npy')
+        primes = np.load('../Cache_files/cached_primes.npy')
         return list(primes)
     except FileNotFoundError:
         return []

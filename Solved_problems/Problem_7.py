@@ -7,7 +7,7 @@ What is the 10 001st prime number?
 """
 
 
-from Reuseable_Functions import numpy_primes_up_to_n
+from Working_on.Reuseable_Functions import numpy_primes_up_to_n
 
 
 def solution():
