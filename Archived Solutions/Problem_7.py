@@ -14,5 +14,3 @@ def solution():
     primes = numpy_primes_up_to_n(105000)
     print(primes[10001 - 1])
     return
-
-# First attempt = 104743 (CORRECT) solved in 0.02725340000000001 seconds

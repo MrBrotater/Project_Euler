@@ -236,5 +236,3 @@ def solution():
     print(output)
 
     return
-
-# first attempt = 5537376230 (CORRECT) solved in 1.000000000001e-06 seconds

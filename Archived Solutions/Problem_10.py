@@ -22,8 +22,3 @@ def solution():
             print(p, sum_of_primes)
         print(p, sum_of_primes)
     return
-
-# my 100% original seive of eratosthenes algorithm would have taken ~15 hrs to solve
-# found a more efficient version that utilized numpy arrays instead of lists and
-# solution = 1179908154 (incorrect) -> int data type cannot support numbers over 32? bit
-# solution = 142913828922 (CORRECT) solved in 4.637629799999999 seconds

@@ -24,6 +24,3 @@ def solution():
     largest_palindrome = max(palindromic_numbers)
     print(largest_palindrome)
     return
-
-# First attempt = 580085 finished in 0.10795270000000001 seconds (incorrect)
-# Second attempt = 906609 finished in 10.7379314 seconds (correct)

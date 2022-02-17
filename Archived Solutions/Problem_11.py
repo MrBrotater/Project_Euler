@@ -84,8 +84,3 @@ def solution():
                     max_product = temp_prod
     print(max_product)
     return
-
-
-# first attempt = 51267216 (INCORRECT) solved in 0.00740650000000001 seconds
-#  stupid mistake - left off a piece of code
-# second attempt = 70600674 (CORRECT) solved in 0.0013859999999999983 seconds

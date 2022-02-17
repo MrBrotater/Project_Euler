@@ -77,5 +77,3 @@ def solution():
     print(max_prod)
 
     return
-
-# First attempt = 23514624000 (CORRECT) solved in 0.0026621000000000006 seconds

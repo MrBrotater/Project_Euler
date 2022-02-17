@@ -25,6 +25,3 @@ def solution():
         n += 1
 
     return
-
-
-# First solution = 232792560 (CORRECT) solved in 237.19471109999998 seconds

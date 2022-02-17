@@ -26,5 +26,4 @@ def solution():
         if term % 2 == 0:
             sum_of_even_terms += term
     print(sum_of_even_terms)
-
-# solution = 4613732 (CORRECT) in 2.3300000000003873e-05 seconds
+    return

@@ -134,3 +134,9 @@ def get_cached_primes() -> list:
 def is_palindrome(n: int) -> bool:
     """ returns true if n is a palindrome (same value reversed as forwards) """
     return True if str(n) == str(n)[::-1] else False
+
+
+def sum_digits(n):  # NOTE: tested this with digits = numpy array and return numpy.sum, was much slower
+    """ returns the sum of the digits in a number n """
+    digits = [int(i) for i in str(n)]
+    return sum(digits)

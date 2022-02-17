@@ -1,17 +1,18 @@
 """
-Problem 15: Lattice Paths
+Problem 20: Factorial Digit Sum
 ----------------------------------
+n! means n × (n − 1) × ... × 3 × 2 × 1
 
+For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,
+and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 
-Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down,
-there are exactly 6 routes to the bottom right corner.
-
-see link for picture: https://projecteuler.net/problem=15
-
-How many such routes are there through a 20×20 grid?
+Find the sum of the digits in the number 100!
 """
+
+from Reuseable_Functions import sum_digits
 
 
 def solution():
-
+    #prob 16
+    print(sum_digits(2**1000))
     return

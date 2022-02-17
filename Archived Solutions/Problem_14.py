@@ -50,7 +50,3 @@ def solution():
 
     print(f'solution = {start_num}, sequence length = {max_count}')
     return
-
-# first attempt = 932068 (INCORRECT) solved in 443.1113469 seconds
-# had function calls backwards in next_n function dictionary
-# second attempt = 837799 (CORRECT) solved in 53.8575394 seconds

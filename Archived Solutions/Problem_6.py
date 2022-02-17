@@ -39,6 +39,3 @@ def solution():
     sqsum = square_of_sum(n)
     print(sumsq, sqsum, sqsum - sumsq)
     return
-
-
-# First solution = 25164150 (CORRECT) solved in 3.3100000000001184e-05 seconds

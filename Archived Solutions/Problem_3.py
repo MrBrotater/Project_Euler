@@ -21,7 +21,3 @@ def solution():
     largest_prime_factor = prime_factors[-1]
     print(largest_prime_factor)
     return
-
-
-# First attempt = 6857 (Correct) but solution took ~4 hrs to compute
-# Second attempt = 6857 (Correct) solved in 0.4981049000000001 seconds using new numpy sieve of eratosthenes

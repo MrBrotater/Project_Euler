@@ -30,5 +30,3 @@ def solution():
                 if is_pythagorean_triplet(x, y, z):
                     return print('solution: ', x, y, z, x * y * z)
     return
-
-# First attempt = 31875000 (CORRECT) solved in 2.2106484 seconds

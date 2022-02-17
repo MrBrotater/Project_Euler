@@ -47,9 +47,3 @@ def solution():
         if n % 100 == 0:
             print(f'progress: n = {n}, tri_num = {tri_num}')
     return
-
-# solution = 76576500, need to find a way to get there in a reasonable time
-
-# stopped with progress: n = 11300, tri_num = 63839350
-
-# first attempt = 76576500 (CORRECT) solved in: looooooooong time

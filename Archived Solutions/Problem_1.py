@@ -23,6 +23,4 @@ def solution():
         else:
             print(f'{i} is a NOT multiple of 3 or 5')
     print(sum_of_factors)
-
-# first attempt = 33165 (WRONG)
-# second attempt = 233168 (CORRECT) in 0.0350167 seconds
+    return

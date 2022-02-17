@@ -14,5 +14,4 @@ def sum_digits(n):
 
 def solution():
     print(sum_digits(2**1000))
-
     return
