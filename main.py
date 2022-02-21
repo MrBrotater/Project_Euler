@@ -1,9 +1,7 @@
-# import Solved_problems.Problem_1
-import Solved_problems.Problem_22
+import Working_on.Problem_18
 import timeit
 
-# problem = Solved_problems.Problem_1
-problem = Solved_problems.Problem_22
+problem = Working_on.Problem_18
 
 start_time = timeit.default_timer()
 
