@@ -18,7 +18,35 @@ The proper divisors of 284 are:
 Evaluate the sum of all the amicable numbers under 10000.
 """
 
+from Working_on.Reuseable_Functions import proper_divisors_of_n
+
+list_to_check = [i for i in range(1, 10000)]
+amicable_nos = []
+non_amicable_nos = []
+
+
+def is_amicable(a):
+    b = sum(proper_divisors_of_n(a))
+    c = sum(proper_divisors_of_n(b))
+    if c == a and a != b:
+        return True, [a, b]
+    else:
+        return False, [a]
+
 
 def solution():
+    for i in list_to_check:
+        result, nums = is_amicable(i)
+        if result:
+            for num in nums:
+                amicable_nos.append(num)
+                if num in list_to_check:
+                    list_to_check.remove(num)
+        else:
+            non_amicable_nos.append(i)
+            list_to_check.remove(i)
+    print(amicable_nos)
+    print(non_amicable_nos)
+    print(sum(amicable_nos))
 
     return

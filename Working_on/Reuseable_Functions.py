@@ -1,6 +1,7 @@
 import timeit
 import numpy as np
 
+
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
     """ returns True if x is a multiple of y, else False """
     return True if x % y == 0 else False
@@ -58,7 +59,12 @@ def primes_up_to_n(n: int) -> list:
 
 
 def numpy_primes_up_to_n(n: int) -> list:
-    """ very efficient sieve of eratosthenes implementation to find primes up to number n """
+    """
+    very efficient sieve of eratosthenes implementation to find primes up to number n.
+    doesn't seem to work for numbers < 8 for some reason.
+    """
+    if n < 8:
+        return [i for i in [2, 3, 5, 7] if i <= n]
     a = np.array(range(3, n, 2))
     for j in range(0, int(round(np.sqrt(n), 0))):  # checks values from 0 to sqrt(n)
         a[(a != a[j]) & (a % a[j] == 0)] = 0  # assigns all multiples of j to 0
@@ -90,11 +96,11 @@ def proper_divisors_of_n(n: int) -> list:
     """ returns a list of the proper divisors (factors) of the number n """
     primes = numpy_primes_up_to_n(n)
     prime_factors = [p for p in primes if n % p == 0]
-    factors = prime_factors + [int(n / p) for p in prime_factors] + [1, n]
+    factors = prime_factors + [int(n / p) for p in prime_factors] + [1]
     for p in prime_factors:
         while p <= n:
             p += p
-            if p not in factors and n % p == 0:
+            if p not in factors and n % p == 0 and p != n:
                 factors += [p, int(n / p)]
     return factors
 
