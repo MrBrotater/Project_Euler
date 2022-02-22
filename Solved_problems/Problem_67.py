@@ -20,11 +20,15 @@ second it would take over twenty billion years to check them all. There is an ef
 solve it. ;o)
 """
 
-triangle = triangle.split("\n")
+with open('Working_on/Problem_67_Triangle.txt', 'r') as f:
+    lines = f.read()
+
 triangle_array = []
-for row in triangle:
-    row_list = [int(i) for i in row.split(" ")]
-    triangle_array.append(row_list)
+
+lines = lines.split('\n')
+
+for line in lines:
+    triangle_array.append([int(i) for i in line.split(' ')])
 
 
 def solution():
