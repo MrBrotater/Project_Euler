@@ -10,14 +10,16 @@ see link for picture: https://projecteuler.net/problem=15
 
 How many such routes are there through a 20×20 grid?
 """
-from itertools import permutations
+# from itertools import permutations
+#
+#
+# def solution():  # this probably works, but is far too slow (ran for > 1 hr)
+#     n = 20
+#     init_choices = n * 'E' + n * 'S'
+#     print(init_choices)
+#     possible_paths = set(permutations(init_choices))
+#
+#     print(len(possible_paths))
+#     return
 
-
-def solution():  # this probably works, but is far too slow (ran for > 1 hr)
-    n = 20
-    init_choices = n * 'E' + n * 'S'
-    print(init_choices)
-    possible_paths = set(permutations(init_choices))
-
-    print(len(possible_paths))
-    return
+# SEE EXCEL SHEET

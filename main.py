@@ -1,7 +1,7 @@
-import Working_on.Problem_15
+import Solved_problems.Problem_15
 import timeit
 
-problem = Working_on.Problem_15
+problem = Solved_problems.Problem_15
 
 
 
