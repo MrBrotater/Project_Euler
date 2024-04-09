@@ -1,5 +1,6 @@
 import timeit
 import numpy as np
+import math
 
 
 def is_x_a_multiple_of_y(x: int, y: int) -> bool:
@@ -145,3 +146,7 @@ def sum_digits(n):  # NOTE: tested this with digits = numpy array and return num
     """ returns the sum of the digits in a number n """
     digits = [int(i) for i in str(n)]
     return sum(digits)
+
+
+def count_digits(n):
+	return int(math.log10(n)) + 1
