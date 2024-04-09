@@ -149,4 +149,5 @@ def sum_digits(n):  # NOTE: tested this with digits = numpy array and return num
 
 
 def count_digits(n):
+	""" returns the number of digits in an integer """
 	return int(math.log10(n)) + 1
