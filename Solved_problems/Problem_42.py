@@ -53,3 +53,5 @@ for word in data:
     
     if numeric_value in triangle_nums:
         triangle_words += 1
+
+print(triangle_words)
