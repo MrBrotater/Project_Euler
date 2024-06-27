@@ -17,7 +17,7 @@ how many are triangle words?
 # ------------ import data
 import csv
 
-with open('words.txt', 'r') as file:
+with open('Problem_42_words.txt', 'r') as file:
     reader = csv.reader(file)
     data = list(reader)[0]
 
