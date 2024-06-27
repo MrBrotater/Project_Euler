@@ -95,15 +95,11 @@ def no_of_proper_divisors(n: int, primes: list) -> int:
 
 def proper_divisors_of_n(n: int) -> list:
     """ returns a list of the proper divisors (factors) of the number n """
-    primes = numpy_primes_up_to_n(n)
-    prime_factors = [p for p in primes if n % p == 0]
-    factors = prime_factors + [int(n / p) for p in prime_factors] + [1]
-    for p in prime_factors:
-        while p <= n:
-            p += p
-            if p not in factors and n % p == 0 and p != n:
-                factors += [p, int(n / p)]
-    return factors
+    factors = []
+    for i in range (1, int(n**0.5) + 1):
+        if n % i == 0:
+            factors += [i, n//i]
+    return set(factors)
 
 
 def get_not_primes(primes: list, n: int) -> list:
