@@ -132,10 +132,15 @@ def get_cached_primes() -> list:
     except FileNotFoundError:
         return []
 
-
+'''
 def is_palindrome(n: int) -> bool:
     """ returns true if n is a palindrome (same value reversed as forwards) """
     return True if str(n) == str(n)[::-1] else False
+'''
+
+def isPalindrome(n: int) -> bool:
+    """ returns true if n is a palindrome (same value reversed as forwards) """
+    return str(n) == str(n)[::-1]
 
 
 def sum_digits(n):  # NOTE: tested this with digits = numpy array and return numpy.sum, was much slower
@@ -147,3 +152,14 @@ def sum_digits(n):  # NOTE: tested this with digits = numpy array and return num
 def count_digits(n):
 	""" returns the number of digits in an integer """
 	return int(math.log10(n)) + 1
+
+def decToBinary(dec: int) -> str:
+    ''' convert number from decimal/base 10 to binary/base 2 '''
+    binary = ''
+    while dec > 0:
+        binary += str(dec - (dec // 2) * 2)
+        if dec == 1:
+            dec = 0
+        else:
+            dec = dec //2
+    return binary[::-1]
