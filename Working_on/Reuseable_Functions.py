@@ -163,3 +163,20 @@ def decToBinary(dec: int) -> str:
         else:
             dec = dec //2
     return binary[::-1]
+
+def find_permutations(s):  
+    # recursive function to compute permutations found online, not original
+    if len(s) == 1:
+        return [s]
+    else:
+        perms = []
+        for i, c in enumerate(s):
+            for perm in find_permutations(s[:i] + s[i+1:]):
+                perms.append(c + perm)
+        return perms
+ 
+def is_prime(n):
+    for i in range(2, n//2+1):
+        if n % i == 0:
+            return False
+    return True
